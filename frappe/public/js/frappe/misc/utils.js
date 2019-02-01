@@ -657,7 +657,14 @@ Object.assign(frappe.utils, {
 		}
 		return route;
 	},
-
+	get_route_label(route_str) {
+		let route = route_str.split('/');
+		if (['List', 'modules'].includes(route[0])){
+			return `${route[1]} ${route[2] || route[0]}`;
+		} else {
+			return `${route[0]} ${route[1]}`;
+		}
+	},
 	report_total_accumulator: function(column, values, type) {
 		if (column.fieldtype == "Percent" || type === "mean") {
 			return values.reduce((a, b) => ({content: a.content + flt(b.content)})).content / values.length;
