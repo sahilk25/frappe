@@ -1,8 +1,4 @@
-const fg const bench_path = path.resolve(frappe_path, "..", "..");
-
-const apps_path = path.resolve(bench_path, "apps");
-const sites_path = path.resolve(bench_path, "sites");
-const assets_path = path.resolve(bench_path, "assets");ire("fast-glob");
+const fg = require("fast-glob");
 const path = require("path");
 const fs = require("fs");
 const chalk = require("chalk");

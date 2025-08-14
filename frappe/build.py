@@ -217,8 +217,6 @@ def setup():
 			pass
 	app_paths = [os.path.dirname(pymodule.__file__) for pymodule in pymodules]
 	assets_path = os.path.join(os.path.dirname(frappe.local.sites_path), "assets")
-
-
 def bundle(
 	mode,
 	apps=None,
