@@ -947,9 +947,14 @@ def get_build_version():
 def get_assets_json():
 	def _get_assets():
 		# get merged assets.json and assets-rtl.json
-		assets = frappe.parse_json(frappe.read_file("assets/assets.json"))
-
-		if assets_rtl := frappe.read_file("assets/assets-rtl.json"):
+		# Get absolute path to assets directory
+		bench_path = get_bench_path()
+		assets_path = os.path.join(bench_path, "assets")
+		
+		assets = frappe.parse_json(frappe.read_file(os.path.join(assets_path, "assets.json")))
+		
+		rtl_file = os.path.join(assets_path, "assets-rtl.json")
+		if os.path.exists(rtl_file) and (assets_rtl := frappe.read_file(rtl_file)):
 			assets.update(frappe.parse_json(assets_rtl))
 
 		return assets

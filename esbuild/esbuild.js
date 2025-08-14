@@ -166,7 +166,7 @@ async function update_assets_obj(app, assets, assets_rtl) {
 		const source_path = path.join(dist_path, file);
 		const dest_path = path.join(sites_path, assets_dist, file);
 
-		// Copy asset file from app/public to sites/assets
+		// Copy asset file from app/public to assets directory
 		if (!fs.existsSync(dest_path)) {
 			const dest_dir = path.dirname(dest_path);
 			fs.mkdirSync(dest_dir, { recursive: true });

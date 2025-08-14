@@ -49,8 +49,10 @@ def build_missing_files():
 	current_asset_files = []
 
 	for type in ["css", "js"]:
-		folder = os.path.join(sites_path, "assets", "frappe", "dist", type)
-		current_asset_files.extend(os.listdir(folder))
+		folder = os.path.join(os.path.dirname(sites_path), "assets", "frappe", "dist", type)
+		os.makedirs(folder, exist_ok=True)
+		if os.path.exists(folder):
+			current_asset_files.extend(os.listdir(folder))
 
 	development = frappe.local.conf.developer_mode or frappe._dev_server
 	build_mode = "development" if development else "production"
