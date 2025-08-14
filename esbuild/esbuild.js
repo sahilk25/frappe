@@ -164,7 +164,7 @@ async function update_assets_obj(app, assets, assets_rtl) {
 	// eg: "js/marketplace.bundle.6SCSPSGQ.js"
 	for (const file of files) {
 		const source_path = path.join(dist_path, file);
-		const dest_path = path.join(sites_path, assets_dist, file);
+		const dest_path = path.join(bench_path, assets_dist, file);
 
 		// Copy asset file from app/public to assets directory
 		if (!fs.existsSync(dest_path)) {
@@ -440,7 +440,7 @@ async function write_assets_json(metafile) {
 	let out = {};
 	for (let output in metafile.outputs) {
 		let info = metafile.outputs[output];
-		let asset_path = "/" + path.relative(sites_path, output);
+		let asset_path = "/" + path.relative(bench_path, output);
 		if (info.entryPoint) {
 			let key = path.basename(info.entryPoint);
 			if (key.endsWith(".css") && asset_path.includes("/css-rtl/")) {
